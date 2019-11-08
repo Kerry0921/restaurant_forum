@@ -24,6 +24,7 @@ class CreateRestaurantTable extends Migration
             $table->string('rName');
             $table->string('rPhoto');
             $table->string('mid');
+            $table->string('rType');
             $table->timestamps();
         });
     }

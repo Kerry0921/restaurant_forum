@@ -10,13 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('favorite', function () {
-    return view('favorite');
-});
-Route::get('restaurant', function () {
-    return view('restaurant');
-});
+//首頁
+Route::get('/','indexControl@index')->name('index');
+//搜尋
+Route::get('search','indexControl@search')->name('search');
+//篩選功能
+Route::get('select','indexControl@selection')->name('select');
+//追蹤
+Route::get('like','indexControl@like')->name('like');
+//追蹤頁面
+Route::get('favorite','indexControl@favorite')->name('favorite');
+//取消追蹤
+Route::get('unlike','indexControl@unlike')->name('unlike');
+//餐廳資訊
+Route::get('detail','indexControl@detail')->name('detail');

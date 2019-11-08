@@ -14,13 +14,14 @@
 </head>
 
 <body>
+
     <!--網頁LOGO-->
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col col-lg-2">
             </div>
             <div class="col-md-auto">
-                <img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/header_logo.png" width="200">
+            <a href="/"><img href="/" src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/header_logo.png" width="200"></a>
             </div>
             <div class="col col-lg-2">
             </div>
@@ -36,76 +37,27 @@
         <p></p>
         <div class="container">
             <div class="row">
+            @foreach($restaurant as $favorite)
                 <div class="col-2" style="text-align: right;">
 
                 </div>
 
-                <div class="col-8 bg-info  text-dark">
+                <div class="col-8 bg-info  text-dark"><p></p>
                     <div class="col-sm" style="font-weight:bolder; font-size: 28px">
-                        <img src="https://dgo9uctxwg500.cloudfront.net/images/480x480%23/zh_TW_dbf3d7abe4.png" style="height: 150px;width: 150px;"> 台北新餐廳搶先訂
-                    </div>
+                    
+                    <a href="restaurant" name="detail"><img src="https://dgo9uctxwg500.cloudfront.net/images/480x480%23/zh_TW_dbf3d7abe4.png" style="height: 150px;width: 150px;"></a>
+                    <a href="restaurant" name="detail">{{$favorite->rName}}</a>
+                        <div><form method="get" action="{{route('unlike')}}"><button type="submit" class="btn btn-primary" value="{{$favorite->rName}}" name="unlike">取消追蹤</button></div></form>
+                    </div><p></p>
                 </div>
-                <div class="col-2"></div>
+                 <div class="col-2"></div>@endforeach
             </div>
             <p></p>
-            <div class="row">
-                <div class="col-2">
-
-                </div>
-
-                <div class="col-8 bg-info text-dark">
-                    <div class="col-sm" style="font-weight:bolder; font-size: 28px">
-                        <img src="https://dgo9uctxwg500.cloudfront.net/images/480x480%23/zh_TW_dbf3d7abe4.png" style="height: 150px;width: 150px;"> 台北新餐廳搶先訂
-                    </div>
-                </div>
-                <div class="col-2"></div>
-            </div>
-            <P></P>
-            <div class="row">
-                <div class="col-2">
-
-                </div>
-
-                <div class="col-8 bg-info  text-dark">
-                    <div class="col-sm" style="font-weight:bolder; font-size: 28px">
-                        <img src="https://dgo9uctxwg500.cloudfront.net/images/480x480%23/zh_TW_dbf3d7abe4.png" style="height: 150px;width: 150px;"> 台北新餐廳搶先訂
-                    </div>
-                </div>
-                <div class="col-2"></div>
-            </div>
-            <p></p>
-            <div class="row">
-                <div class="col-2">
-
-                </div>
-
-                <div class="col-8 bg-info  text-dark">
-                    <div class="col-sm" style="font-weight:bolder; font-size: 28px">
-                        <img src="https://dgo9uctxwg500.cloudfront.net/images/480x480%23/zh_TW_dbf3d7abe4.png" style="height: 150px;width: 150px;"> 台北新餐廳搶先訂
-                    </div>
-                </div>
-                <div class="col-2"></div>
-            </div>
-            <p></p>
-            <div class="row">
-                <div class="col-2" style="text-align: right;">
-
-                </div>
-
-                <div class="col-8 bg-info  text-dark">
-                    <div class="col-sm" style="font-weight:bolder; font-size: 28px">
-                        <img src="https://dgo9uctxwg500.cloudfront.net/images/480x480%23/zh_TW_dbf3d7abe4.png" style="height: 150px;width: 150px;"> 台北新餐廳搶先訂
-                    </div>
-                </div>
-                <div class="col-2"></div>
-            </div>
-
-
         </div>
-
+        
     </div>
     <!--頁尾導覽列-->
-    <div class="container bg-dark">
+    <div class="container bg-dark" id="Footer">
         <div class="row">
             <ul class="nav justify-content-left">
                 <li class="nav-item">

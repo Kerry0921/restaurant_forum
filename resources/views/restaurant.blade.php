@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +20,7 @@
             <div class="col col-lg-2">
             </div>
             <div class="col-md-auto">
-                <img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/header_logo.png" width="200">
+            <a href="/"><img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/header_logo.png" width="200"></a>
             </div>
             <div class="col col-lg-2">
             </div>
@@ -54,16 +54,16 @@
         <p></p>
 
         <div class="container restaurant-name">
-            <div class="row">
+            <div class="row">@foreach($restaurant as $detaildata)
                 <div class="col-sm font-weight-bold text-dark" style="font-size:18px;">
-                    YOLO’s Cafe 長安建國店
+                    {{$detaildata->rName}}
                 </div>
             </div>
         </div>
         <div class="container restaurant-note">
             <div class="row">
                 <div class="col-sm font-weight-bold text-muted" style="font-size:15px">
-                    “用餐前 2 個月開放訂位；每次訂位接受人數 1~6 人；詳細訂位規則請電洽客服。”
+                {{$detaildata->rOffer}}
                 </div>
             </div>
         </div>
@@ -84,8 +84,8 @@
                 餐廳地點
             </div>
             <div class="col-sm" style="text-align: right;">
-                <button type="button" class="btn btn-outline-info">查看地圖</button>
-            </div>
+           <a href="https://www.google.com/maps/search/等等在改"><button type="button" class="btn btn-outline-info">查看地圖</button></a>
+           </div>
         </div>
     </div>
     <div class="container">
@@ -95,7 +95,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm restaurant-address text-dark" style="font-size:16px ;margin-top: 10px;">台北市中山區長安東路二段129巷9號</div>
+            <div class="col-sm restaurant-address text-dark" style="font-size:16px ;margin-top: 10px;">{{$detaildata->rAddress}}</div>
         </div>
     </div>
     <p></p>
@@ -254,10 +254,10 @@
         </div>
         <div class="row">
             <div class="col-sm text-dark" style="font-size:16px;margin-top: 10px;">
-                『YOLO’s』，You Only Live Once ‘s
+            {{$detaildata->rDescription}}
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm text-dark" style="font-size:16px;margin-top: 10px;">
                 人生只有那麼一次，你追求的是什麼呢？
             </div>
@@ -271,8 +271,8 @@
             <div class="col-sm text-dark" style="font-size:16px;margin-top: 10px;">
                 利用一杯咖啡的時間，喚醒生命的熱情
             </div>
-        </div>
-    </div>
+        </div> -->
+    </div>@endforeach
     <p></p>
     <p></p>
     <p></p>
