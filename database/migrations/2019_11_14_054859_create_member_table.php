@@ -16,10 +16,9 @@ class CreateMemberTable extends Migration
         Schema::create('member', function (Blueprint $table) {
             $table->Increments('mid');
             $table->string('mName');
-            $table->string('mBirthday');
-            $table->string('mEmail');
-            $table->string('mPhone');
-            $table->string('fid');
+            $table->string('Email')->unique();
+            $table->string('Phone');
+	    $table->string('password');
             $table->string('mType');
             $table->timestamps();
         });

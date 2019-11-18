@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,26 +13,52 @@
 </head>
 
 <body>
-
-    <!--網頁LOGO-->
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col col-lg-2">
-            </div>
-            <div class="col-md-auto">
-            <a href="/"><img href="/" src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/header_logo.png" width="200"></a>
-            </div>
-            <div class="col col-lg-2">
-            </div>
-        </div>
-    </div>
-    <p></p>
-    <p></p>
-    <p></p>
+<div class="d-flex align-items-center">
+                  <div class="col-sm">
+                        <div class="dropdown">
+                                <a href="/"><button class="btn btn-secondary" type="button" >
+                                  返回
+                                </button></a>
+                              </div>
+                  </div>
+                  
+                  <div class="col-sm" style="text-align: center;">
+                  <a href ="/"><img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/logo_moments_zh.png"width="200"></a></div>
+                  <div class="col-sm"  class="dropdown" style="text-align: right;">
+                  @if(session()->has('mName'))
+                  <?php echo "目前用戶：",session('mName') ?>
+                  @else 
+                  <?php echo "目前尚未登入"?>
+                  @endif
+                 
+                  
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ...</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <form method="get">
+                        @if(session()->has('mName'))
+                        <a class="dropdown-item" href="logout" name="logout">登出</a>
+                          @else
+                        <a class="dropdown-item" href="login" name="login">會員登入</a>
+                        @endif
+                        </form>
+                        <form method="get" action="{{route('favorite')}}">
+                        <a class="dropdown-item" href="favorite" name="select">最愛清單</a>
+                        </form>
+                        <a class="dropdown-item" href="/" name="select">備用欄位</a>
+                              </div>
+             
+                  
+                 </div>  
+          </div>
 
     <!--網頁內容-->
     <div class="container bg-light text-dark">
-        <div class="text" style="text-align:center;">最愛清單</div>
+    <div class="text" style="text-align:center;">
+    @if(session()->has('mName'))<?php echo session('mName'),"的最愛清單"?>
+                                                     @else 
+                                                     <?php echo "最愛清單" ?>@endif</div>
+        <div class="text" style="text-align:left;">
         <p></p>
         <div class="container">
             <div class="row">
@@ -42,12 +67,12 @@
 
                 </div>
 
-                <div class="col-8 bg-info  text-dark"><p></p>
+                <div class="col-8 bg-info  text-white"><p></p>
                     <div class="col-sm" style="font-weight:bolder; font-size: 28px">
                     
-                    <a href="restaurant" name="detail"><img src="https://dgo9uctxwg500.cloudfront.net/images/480x480%23/zh_TW_dbf3d7abe4.png" style="height: 150px;width: 150px;"></a>
-                    <a href="restaurant" name="detail">{{$favorite->rName}}</a>
-                        <div><form method="get" action="{{route('unlike')}}"><button type="submit" class="btn btn-primary" value="{{$favorite->rName}}" name="unlike">取消追蹤</button></div></form>
+                    <a href="detail?detail={{$favorite->rid}}" name="detail" value="{{$favorite->rid}}"><img src="https://dgo9uctxwg500.cloudfront.net/images/480x480%23/zh_TW_dbf3d7abe4.png" style="height: 150px;width: 150px;"></a>
+                    <a href="detail?detail={{$favorite->rid}}" name="detail" value="{{$favorite->rid}}" style="color:white;">{{$favorite->rid}}</a>
+                        <div><form method="get" action="{{route('unlike')}}"><button type="submit" class="btn btn-primary" value="{{$favorite->rid}}" name="unlike">取消追蹤</button></div></form>
                     </div><p></p>
                 </div>
                  <div class="col-2"></div>@endforeach

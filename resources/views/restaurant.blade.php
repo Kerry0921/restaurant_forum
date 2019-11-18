@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>單一餐廳頁面</title>
+    <title>餐廳資訊</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--[if lt IE 9]>       
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>       
@@ -34,15 +34,18 @@
 
         <div class="container restaurant-navbar">
             <div class="row justify-content-md-center">
-                <div class="col-sm text-center bg-light text-dar  ">
-                    訂位
+                <div class="col-sm text-center bg-light text-dar">
+                
+                    追蹤人數：{{$count}}人
                 </div>
                 <div class="col-sm  bg-danger text-white text-center  ">
                     資訊
                 </div>
+                @foreach($restaurant as $detaildata)
                 <div class="col-sm text-center bg-light text-dar ">
-                    評論
-                </div>
+                <form method="get" action="{{route('common')}}" name="common" value="{{$detaildata->rid}}">
+                   <a href="/common"><button type='submit' name="common" value="{{$detaildata->rid}}"> 全部評論 </button></a>
+                   </form></div>  @endforeach
             </div>
         </div>
 
@@ -71,7 +74,10 @@
         <div class="container restaurant-bookingbutton">
             <div class="row">
                 <div class="col-sm">
-                    <button type="button " class="btn btn-primary btn-lg btn-block">我要訂位</button>
+                <form method="get" action="{{route('like')}}">
+                <button   type="submit" class="btn btn-primary" value="{{$detaildata->rName}}" name="like">追蹤</button></a>
+                </form>
+                
                 </div>
             </div>
         </div>
@@ -84,7 +90,7 @@
                 餐廳地點
             </div>
             <div class="col-sm" style="text-align: right;">
-           <a href="https://www.google.com/maps/search/等等在改"><button type="button" class="btn btn-outline-info">查看地圖</button></a>
+           <a href="https://www.google.com/maps/search/{{$detaildata->rAddress}}"><button type="button" class="btn btn-outline-info">查看地圖</button></a>
            </div>
         </div>
     </div>

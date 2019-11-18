@@ -20,7 +20,7 @@
                                   
                                 <a class="dropdown-item" href="select?select=1" name="select">1</a>
                                 <a class="dropdown-item" href="select?select=2" name="select">2</a>
-                                <a class="dropdown-item" href="select?select=2" name="select">3</a>
+                                <a class="dropdown-item" href="select?select=3" name="select">3</a>
                                                         
                                 </div>
                               </div>
@@ -29,7 +29,41 @@
                                 <a href="/"><img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/logo_moments_zh.png"width="200"></a>
                   </div>
                   <div class="col-sm" style="text-align: right;">
-                    <a href="favorite"><button type="button" class="btn btn-secondary btn-lg";>最愛清單</button></a>
+                  @if(session()->has('mName'))
+                  <?php echo "目前用戶：",session('mName') ?>
+                  @else 
+                  <?php echo "目前尚未登入"?>
+                  @endif
+                  
+                  
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ...</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <form method="get">
+                        @if(session()->has('mName'))
+                        <a class="dropdown-item" href="logout" name="logout">登出</a>
+                          @else
+                        <a class="dropdown-item" href="login" name="login">會員登入</a>
+                        @endif
+                        </form>
+                        <form method="get" action="{{route('favorite')}}">
+                        <a class="dropdown-item" href="favorite" name="select">最愛清單</a>
+                        </form>
+                        <form method="get">
+                        @if(session()->has('mName'))
+                        <?php $SN = session('mName') ?>
+                        <a class="dropdown-item" href="memberedit" name=$SN input=$SN>修改會員資料</a>
+                          @else
+                        <a class="dropdown-item" href="register" name="register">註冊會員</a>
+                        @endif</form>
+                        <form method="get" action="{{route('restaurantS')}}">
+                        @if(session('mType')==2)
+                        
+                        <a class="dropdown-item" href="restaurantS">餐廳相關</a>
+                        @else
+                        <a class="dropdown-item" href="/">返回</a>
+                        @endif</form>
+                              </div>
                   </div>
                 </div>
              
@@ -127,7 +161,7 @@
                                                         
                                                         <a class="dropdown-item" href="select?select=1" name="select">1</a>
                                                         <a class="dropdown-item" href="select?select=2" name="select">2</a>
-                                                        <a class="dropdown-item" href="select?select=2" name="select">3</a>
+                                                        <a class="dropdown-item" href="select?select=3" name="select">3</a>
                                                         
                                                         </div>
                                                       </div>

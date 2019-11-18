@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFavoriteTable extends Migration
+class CreateCommonTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateFavoriteTable extends Migration
      */
     public function up()
     {
-        Schema::create('favorite', function (Blueprint $table) {
-            $table->Increments('fid');
-            $table->string('rid');
+        Schema::create('common', function (Blueprint $table) {
+             $table->string('mid')->unique();
+	    $table->string('rid');
+	    $table->string('common');
+	    $table->string('point');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateFavoriteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favorite');
+        Schema::dropIfExists('common');
     }
 }

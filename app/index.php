@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class index extends Model
 {
    public $table = "restaurant";
-   protected $restaurant=[
+   protected $fillable=[
       'rid',
       'rFavorite',
       'category',

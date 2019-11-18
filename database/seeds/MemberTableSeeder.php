@@ -13,11 +13,11 @@ class MemberTableSeeder extends Seeder
     public function run()
     {
         DB::table('member')->insert([
+
         'mName'=>Str::random(10),
-        'mBirthday'=>Str::random(8),
-        'mEmail'=>Str::random(10).'@gmail.com',
-        'mPhone'=>Str::random(10),
-        'fid'=>Str::random(10),
+        'Email'=>Str::random(10).'@gmail.com',
+        'Phone'=>Str::random(10),
+	'password'=>Str::random(10),
         'mType'=>0,
         
 ]);

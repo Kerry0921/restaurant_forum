@@ -6,19 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class member extends Model
 {
-        protected $member=[
+   public $table = "member";
+        protected $fillable=[
            'mid',
            'mName',
-           'mBirthday',
-           'mEmail',
-           'mPhone',
+           'Email',
+           'Phone',
+           'password',
            'fid',
            'mType',
         ];
-     
-        public function restaurant()
-        {
-           return $this->hasOne(restaurant::class);
-        }
+      //關聯
+      //   public function restaurant()
+      //   {
+      //      return $this->hasOne(restaurant::class);
+      //   }
      
 }
