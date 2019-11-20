@@ -61,7 +61,13 @@
                 <h1>新增評論</h1>
                 <div class="form-group">
                 <label>
-                  
+                      <input hidden class="form-control"
+                             type="text"
+                             name="fid"
+                             value="{{$G}},{{session('mid')}}"
+                  ></label></div>
+                <div class="form-group">
+                <label>
                     餐廳編號
                       <input readonly class="form-control"
                              type="text"
@@ -70,7 +76,6 @@
                   ></label></div>
                 <div class="form-group">
                 <label>
-                  
                     會員編號
                       <input readonly class="form-control"
                              type="text"
@@ -79,7 +84,6 @@
                   ></label></div>
                   <div class="form-group">
                   <label>
-                  
                     評論
                       <input class="form-control"
                              type="text"

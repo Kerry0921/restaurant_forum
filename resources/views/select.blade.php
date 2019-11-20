@@ -58,11 +58,15 @@
                         @endif</form>
                         <form method="get" action="{{route('restaurantS')}}">
                         @if(session('mType')==2)
-                        
                         <a class="dropdown-item" href="restaurantS">餐廳相關</a>
+                        </form>
+                        @elseif(session('mType')==1)
+                        <form method="get" action="{{route('sudo')}}">
+                        <a class="dropdown-item" href="sudo">超級使用者界面</a>
+                        </form>
                         @else
                         <a class="dropdown-item" href="/">返回</a>
-                        @endif</form>
+                        @endif
                               </div>
                   </div>
                 </div>
@@ -110,11 +114,10 @@
                                   <img class="card-img-top" src="https://images.unsplash.com/photo-1481070414801-51fd732d7184?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card image cap">
                                   <div class="card-body">
                                   
-                                    <h3 class="card-title">{{$select->rName}}</h3>
-                                    <p class="card-text">{{$select->rType}}</p>
+                                  <a href="detail?detail={{$select->rName}}" style="color:black;" name="detail" value="{{$select->rName}}"><h3 class="card-title">{{$select->rName}}</h3>
+                                    </a><p class="card-text">{{$select->rType}}</p>
                                   
-                                    <a href="restaurant" class="btn btn-primary">Go somewhere</a>
-                                    <a href="/" class="btn btn-primary">追蹤</a>
+                                    <a href="detail?detail={{$select->rName}}" class="btn btn-primary">餐廳資訊</a>
                                 </div>
                                 </div>
                               </div>

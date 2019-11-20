@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首頁</title>
+    <title>修改會員資訊</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-
-                <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center">
                   <div class="col-sm">
                         <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  選擇分類
-                                </button>
+                                <a href="/"><button class="btn btn-secondary " type="button" id=""  aria-haspopup="true" aria-expanded="false">
+                                  返回首頁
+                                </button></a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="select?select=1" name="select">1</a>
-                                <a class="dropdown-item" href="select?select=2" name="select">2</a>
-                                <a class="dropdown-item" href="select?select=3" name="select">3</a>
+                                
                                  
                                 </div>
                               </div>
@@ -28,11 +24,6 @@
                   <div class="col-sm" style="text-align: center;">
                   <a href ="/"><img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/logo_moments_zh.png"width="200"></a>                  </div>
                   <div class="col-sm"  class="dropdown" style="text-align: right;">
-                  @if(session()->has('mName'))
-                  <?php echo "目前用戶：",session('mName') ?>
-                  @else 
-                  <?php echo "目前尚未登入"?>
-                  @endif
                   
                   
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -66,70 +57,80 @@
                         @else
                         <a class="dropdown-item" href="/">返回</a>
                         @endif
-
-
-                        
                               </div>
-             
-                  
-                  </div>
-                </div>
-             
 
-                    <div style="background-color: yellow;height:352px;width: 100%;position: relative;">
+                              
+                            </div>
+                          </div>
+
+                <div style="background-color: yellow;height:352px;width: 100%;position: relative;">
                       <div style="position: absolute;bottom:0;left:25%">
                         <div class="container" style="width: 800px;">
                           <div class="row">
-                            <div class="col-sm">
-                              
-                            </div>
-                            <div class="col-sm"><form method="get" action="{{route('search')}}">
-                              <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                
-                                <span class="input-group-text" id="inputGroup-sizing-sm">
-                                輸入查詢</span>
-                                </div>
-                                
-                                <input type="text" name="search" class="form-control" aria-label="請輸入" aria-describedby="inputGroup-sizing-sm" >
-                                
-                              </div>
-                            </div>
-                            <div class="col-sm">
-                              <button type="submit"  style="color:black;background-color:red ;">找餐廳</button></form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>                    
-                    </div>
-
-                    </div> 
-
-                    <div class="container">
-                            <div class="row">
-                              <div class="col">
-                                    <h1 class="display-4"> Kaohsiung City美食</h1>
-                              </div>
-                            </div>
-                            <div class="row">@foreach($restaurant as $index)
+                            <div class="col-sm"></div></div></div></div></div></div> 
+                            <div>　　　　　　　　　　　　　　　　</div>
                             
-                              <div class="col" style="padding:20px;">
-                                <div class="card" style="width: 18rem;">
-                                  <img class="card-img-top" src="https://images.unsplash.com/photo-1481070414801-51fd732d7184?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card image cap">
-                                  <div class="card-body"> 
-                                    <a href="detail?detail={{$index->rName}}" style="color:black;" name="detail" value="{{$index->rName}}"><h3 class="card-title">{{$index->rName}}</h3></a>
-                                    <p class="card-text">類別：{{$index->rType}}</p>
-                                    <h6 class="card-title">
-                                   </h6>
-                                    <a href="detail?detail={{$index->rName}}" class="btn btn-primary">餐廳資訊</a>
-                                </div>
-                                </div>
-                              </div>
-                               @endforeach</div>
-                          </div>
-                          <div><p></p></div>
-                          <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-                        <div style="background-color:rgb(24, 22, 22);">
+
+            <div class=out1 style='text-align:center'>
+            @foreach($Emember as $edit)
+              <form action="sudome" method="post">
+                <h1>會員資料修改</h1>
+                <div class="form-group">
+                <label>
+                  
+                    會員編號
+                      <input readonly class="form-control"
+                             type="text"
+                             name="mid"
+                             value="{{$edit->mid}}"
+                  ></label></div>
+                  <div class="form-group">
+                  <label>
+                  
+                    會員名稱
+                      <input readonly class="form-control"
+                             type="text"
+                             name="mName"
+                             placeholder="會員名稱"
+                             value="{{$edit->mName}}"
+                  ></label>
+                </div>
+                <div class="form-group">
+                  <label>
+                    Email
+                      <input readonly class="form-control"
+                             type="text"
+                             name="Email"
+                             placeholder="Email"
+                             value="{{$edit->Email}}"
+                  ></label>
+                </div>
+                <div class="form-group">
+                  <label>
+                    電話
+                      <input readonly class="form-control"
+                             type="text"
+                             name="Phone"
+                             placeholder="電話"
+                             value="{{$edit->Phone}}"
+                  ></label>
+                </div>
+                <div style="form-group">
+                  <label>
+                    會員種類
+                    <select style="height:50px" name="mType">
+                    <option value="0">會員</option>
+                    <option value="2">餐廳管理員</option>
+                             </select>
+                  </label>
+                </div>
+                {!! csrf_field() !!}
+                <button type="submit" class="btn btn-success">修改</button>
+                </form>@endforeach</div>
+                <div>　　　　　　　　　　　　　　　　</div>
+
+                        
+                          <div style="background-color:rgb(24, 22, 22);">
                           <div class="container">
                               <div class="row">
                                   <div class="col-12 col-md-8">
@@ -156,26 +157,7 @@
                                         </ul>
                                       </ul>
                                   </div>
-                                  <div class="col12 col-md-2"></div>
-                                  <div class="col12 col-md-2">
-                                      <div class="d-flex align-items-center">
-                                          <div class="col-sm">
-                                                <div class="dropdown">
-                                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                          選擇分類
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        
-                                                        <a class="dropdown-item" href="select?select=1" name="select">1</a>
-                                                        <a class="dropdown-item" href="select?select=2" name="select">2</a>
-                                                        <a class="dropdown-item" href="select?select=3" name="select">3</a>
-                                                        
-                                                        </div>
-                                                      </div>
-                                      </div>
-                                  </div>
-                                </div>
-                          </div>
+                                 
                             
                           <div class="container">
                               <div class="row">

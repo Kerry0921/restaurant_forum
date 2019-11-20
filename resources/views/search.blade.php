@@ -29,7 +29,37 @@
                                 <a href="/"><img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/logo_moments_zh.png"width="200"></a>
                   </div>
                   <div class="col-sm" style="text-align: right;">
-                    <a href="favorite"><button type="button" class="btn btn-secondary btn-lg";>最愛清單</button></a>
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ...</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <form method="get">
+                        @if(session()->has('mName'))
+                        <a class="dropdown-item" href="logout" name="logout">登出</a>
+                          @else
+                        <a class="dropdown-item" href="login" name="login">會員登入</a>
+                        @endif
+                        </form>
+                        <form method="get" action="{{route('favorite')}}">
+                        <a class="dropdown-item" href="favorite" name="select">最愛清單</a>
+                        </form>
+                        <form method="get">
+                        @if(session()->has('mName'))
+                        <?php $SN = session('mName') ?>
+                        <a class="dropdown-item" href="memberedit" name=$SN input=$SN>修改會員資料</a>
+                          @else
+                        <a class="dropdown-item" href="register" name="register">註冊會員</a>
+                        @endif</form>
+                        <form method="get" action="{{route('restaurantS')}}">
+                        @if(session('mType')==2)
+                        <a class="dropdown-item" href="restaurantS">餐廳相關</a>
+                        </form>
+                        @elseif(session('mType')==1)
+                        <form method="get" action="{{route('sudo')}}">
+                        <a class="dropdown-item" href="sudo">超級使用者界面</a>
+                        </form>
+                        @else
+                        <a class="dropdown-item" href="/">返回</a>
+                        @endif</div>
                   </div>
                 </div>
              
@@ -76,11 +106,11 @@
                                   <img class="card-img-top" src="https://images.unsplash.com/photo-1481070414801-51fd732d7184?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Card image cap">
                                   <div class="card-body">
                                   
-                                    <h3 class="card-title">{{$searchback->rName}}</h3>
+                                  <a href="detail?detail={{$searchback->rName}}" style="color:black;" name="detail" value="{{$searchback->rName}}"><h3 class="card-title">{{$searchback->rName}}</h3></a>
                                     <p class="card-text">{{$searchback->rType}}</p>
                                   
-                                    <a href="restaurant" class="btn btn-primary">Go somewhere</a>
-                                    <a href="/" class="btn btn-primary">追蹤</a>
+                                    <a href="detail?detail={{$searchback->rName}}" class="btn btn-primary">餐廳資訊</a>
+                                   
                                 </div>
                                 </div>
                               </div>

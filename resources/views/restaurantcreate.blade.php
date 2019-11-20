@@ -114,7 +114,7 @@
                 <div class="form-group">
                 <label>
                     管理員編號
-                      <input class="form-control"
+                      <input readonly class="form-control"
                              name="mid"
                              value="{{session('mid')}}"
                   ></label></div>

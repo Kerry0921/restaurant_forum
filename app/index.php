@@ -9,17 +9,14 @@ class index extends Model
    public $table = "restaurant";
    protected $fillable=[
       'rid',
-      'rFavorite',
-      'category',
+      'rName',
       'rDescription',
       'rBHour',
       'rOffer',
       'rAddress',
-      'rName',
-      'rType',
       'rPhoto',
       'mid',
-      
+      'rType',
    ];
 
 }

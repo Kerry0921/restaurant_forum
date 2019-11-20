@@ -126,7 +126,6 @@ public function detail(Request $request)
          $rules = [
             'rName'=>[
                 'required',
-                'max:50',
             ],
             'rDescription'=>[
                 'required',
@@ -149,7 +148,7 @@ public function detail(Request $request)
                 'max:50',
             ],
             'mid'=>[
-                'unique:index',
+                'unique:restaurant',
                 'required',
                 'max:50',
             ],
@@ -296,16 +295,19 @@ public function detail(Request $request)
     //新增評論
     public function commonsave(Request $request)
       {
-        $input = request()->all();
+        $input = request()->except(['_token']);
         //資料驗證
         // dd($input);
         $rules = [
+            'fid'=>[
+                'unique:common',
+                'required',
+           ],
            'common'=>[
                'required',
                'max:50',
            ],
            'mid'=>[
-            'unique:common',
             'required',
            ],
        ];

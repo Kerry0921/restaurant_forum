@@ -8,6 +8,7 @@ class common extends Model
 {
    public $table = "common";
    protected $fillable=[
+      'fid',
       'mid',
       'rid',
       'common',

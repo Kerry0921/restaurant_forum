@@ -6,20 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class restaurant extends Model
 {
-    public $table = "restaurant";
-    protected $restaurant=[
-       'rid',
-       'rFavorite',
-       'category',
-       'rDescription',
-       'rBHour',
-       'rOffer',
-       'rAddress',
-       'rName',
-       'rType',
-       'rPhoto',
-       'mid',
-       
-    ];
+   public $table = "restaurant";
+   protected $fillable=[
+      'rid',
+      'rName',
+      'rDescription',
+      'rBHour',
+      'rOffer',
+      'rAddress',
+      'rPhoto',
+      'mid',
+      'rType',
+   ];
  
  }

@@ -14,7 +14,8 @@ class CreateCommonTable extends Migration
     public function up()
     {
         Schema::create('common', function (Blueprint $table) {
-             $table->string('mid')->unique();
+            $table->string('fid')->unique();
+	    $table->string('mid');
 	    $table->string('rid');
 	    $table->string('common');
 	    $table->string('point');

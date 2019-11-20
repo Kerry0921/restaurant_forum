@@ -68,3 +68,10 @@ Route::get('newcommon','indexControl@newcommon')->name('newcommon');
 Route::post('newcommon','indexControl@commonsave')->name('newcommon');
 //新增評論成功
 Route::get('cssuccess','indexControl@cssuccess')->name('cssuccess');
+
+//超級使用者界面
+Route::get('sudo','memberControl@sudo')->name('sudo');
+//會員修改界面
+Route::get('sudome','memberControl@sudome')->name('sudome');
+//會員資料修改
+Route::post('sudome','memberControl@sudomesave')->name('sudome');

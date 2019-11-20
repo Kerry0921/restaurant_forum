@@ -136,7 +136,7 @@ class memberControl extends Controller
         return redirect('/');
     }
 
-    //修改會員資料
+    //修改會員資料界面
   public function memberedit()
   {
     $N = session('mid');
@@ -147,6 +147,7 @@ class memberControl extends Controller
         //  dd($data);
       return view('memberedit',$data);
   }  
+   //修改會員資料
   public  function membereditsave()
   {
     $input = request()->except(['_token']);
@@ -196,5 +197,39 @@ class memberControl extends Controller
     ]);
     return redirect('memberedit');
   }
+      //超級使用者界面
+      public function sudo()
+      {
+          $mlist=member::all();
+          $mdata =
+          [
+              'member' => $mlist,
+          ];
+          return view('sudo',$mdata);
+      }
 
+      //會員修改界面
+      public function sudome(Request $request)
+      {
+          $M=$request->input('sudome');
+          $edit=member::where('mid','=',$M)->get();
+          $edata =
+          [
+              'Emember' => $edit,
+          ];
+          return view('sudome',$edata);
+      }
+      //修改會員資料
+      public  function sudomesave()
+      {
+    $input = request()->except(['_token']);
+    $medit = member::where('mid','=',$input['mid'])->
+    update([
+        'mName'=>$input['mName'],
+        'Email'=>$input['Email'],
+        'Phone'=>$input['Phone'],
+        'mType'=>$input['mType'],
+      ]);
+    return redirect('sudo');
+  }
 }
