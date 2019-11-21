@@ -55,8 +55,9 @@
                           @else
                         <a class="dropdown-item" href="register" name="register">註冊會員</a>
                         @endif</form>
-                        <form method="get" action="{{route('restaurantS')}}">
+                        
                         @if(session('mType')==2)
+                        <form method="get" action="{{route('restaurantS')}}">
                         <a class="dropdown-item" href="restaurantS">餐廳相關</a>
                         </form>
                         @elseif(session('mType')==1)

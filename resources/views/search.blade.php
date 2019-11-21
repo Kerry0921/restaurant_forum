@@ -49,8 +49,8 @@
                           @else
                         <a class="dropdown-item" href="register" name="register">註冊會員</a>
                         @endif</form>
-                        <form method="get" action="{{route('restaurantS')}}">
                         @if(session('mType')==2)
+                        <form method="get" action="{{route('restaurantS')}}">
                         <a class="dropdown-item" href="restaurantS">餐廳相關</a>
                         </form>
                         @elseif(session('mType')==1)
@@ -60,8 +60,7 @@
                         @else
                         <a class="dropdown-item" href="/">返回</a>
                         @endif</div>
-                  </div>
-                </div>
+                  </div>  </div>
              
 
                     <div style="background-color: yellow;height:352px;width: 100%;position: relative;">
@@ -107,7 +106,7 @@
                                   <div class="card-body">
                                   
                                   <a href="detail?detail={{$searchback->rName}}" style="color:black;" name="detail" value="{{$searchback->rName}}"><h3 class="card-title">{{$searchback->rName}}</h3></a>
-                                    <p class="card-text">{{$searchback->rType}}</p>
+                                    <p class="card-text">類別：{{$searchback->rType}}</p>
                                   
                                     <a href="detail?detail={{$searchback->rName}}" class="btn btn-primary">餐廳資訊</a>
                                    

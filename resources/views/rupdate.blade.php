@@ -50,6 +50,9 @@
                             
 
             <div class=out1 style='text-align:center'>
+            <h1>餐廳更新</h1>
+            @include('components.validationErrorMessage')
+
               <form action="rupdate" method="post">
               @foreach($restaurant as $data)
                 <h1>餐廳資料修改</h1>

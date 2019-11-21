@@ -29,9 +29,12 @@
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   ...</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <form method="get" action="{{route('login')}}">
+                        <form method="get">
+                        @if(session()->has('mName'))
+                        <a class="dropdown-item" href="logout" name="logout">登出</a>
+                          @else
                         <a class="dropdown-item" href="login" name="login">會員登入</a>
-                        </form>
+                        @endif</form>
                         <form method="get" action="{{route('favorite')}}">
                         <a class="dropdown-item" href="favorite" name="select">最愛清單</a>
                         </form>
@@ -50,6 +53,8 @@
                             
 
             <div class=out1 style='text-align:center'>
+            @include('components.validationErrorMessage')
+
               <form action="restaurantcreate" method="post">
                 <h1>新增餐廳</h1>
                 <div class="form-group">

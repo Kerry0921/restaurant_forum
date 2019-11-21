@@ -133,6 +133,8 @@ class memberControl extends Controller
     public function logout()
     {
         session()->forget('mName');
+        session()->forget('mid');
+        session()->forget('mType');
         return redirect('/');
     }
 

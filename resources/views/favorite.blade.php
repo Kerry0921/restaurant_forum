@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>最愛清單頁面</title>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>追蹤頁面</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--[if lt IE 9]>       
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>       
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>     
-  <![endif]-->
 </head>
 
 <body>
@@ -23,49 +21,27 @@
                   </div>
                   
                   <div class="col-sm" style="text-align: center;">
-                  <a href ="/"><img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/logo_moments_zh.png"width="200"></a></div>
+                  <a href ="/"><img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/logo_moments_zh.png"width="200"></a>                  </div>
                   <div class="col-sm"  class="dropdown" style="text-align: right;">
                   @if(session()->has('mName'))
                   <?php echo "目前用戶：",session('mName') ?>
                   @else 
                   <?php echo "目前尚未登入"?>
                   @endif
+                  
                  
-                  
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  ...</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <form method="get">
+                 
                         @if(session()->has('mName'))
-                        <a class="dropdown-item" href="logout" name="logout">登出</a>
+                        <form method="get" action="{{route('logout')}}">
+                        <a href="logout" class="btn btn-secondary" type="button" name="logout">登出</button></a>
+                        </form>
                           @else
-                        <a class="dropdown-item" href="login" name="login">會員登入</a>
+                          <form method="get" action="{{route('login')}}">
+                        <a href="login" class="btn btn-secondary" type="button" name="login">會員登入</button></a>
+                        </form>
                         @endif
-                        </form>
-                        <form method="get" action="{{route('favorite')}}">
-                        <a class="dropdown-item" href="favorite" name="select">最愛清單</a>
-                        </form>
-                        <form method="get">
-                        @if(session()->has('mName'))
-                        <?php $SN = session('mName') ?>
-                        <a class="dropdown-item" href="memberedit" name=$SN input=$SN>修改會員資料</a>
-                          @else
-                        <a class="dropdown-item" href="register" name="register">註冊會員</a>
-                        @endif</form>
-                        <form method="get" action="{{route('restaurantS')}}">
-                        @if(session('mType')==2)
-                        <a class="dropdown-item" href="restaurantS">餐廳相關</a>
-                        </form>
-                        @elseif(session('mType')==1)
-                        <form method="get" action="{{route('sudo')}}">
-                        <a class="dropdown-item" href="sudo">超級使用者界面</a>
-                        </form>
-                        @else
-                        <a class="dropdown-item" href="/">返回</a>
-                        @endif
-                        </div>  
-             
-                  
+                        
+                        
                  </div>  
           </div>
 

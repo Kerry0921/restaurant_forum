@@ -30,7 +30,25 @@
                         <form method="get" action="{{route('favorite')}}">
                         <a class="dropdown-item" href="favorite" name="select">最愛清單</a>
                         </form>
-                        <a class="dropdown-item" href="/" name="select">備用欄位</a>
+                        <form method="get">
+                        @if(session()->has('mName'))
+                        <?php $SN = session('mName') ?>
+                        <a class="dropdown-item" href="memberedit" name=$SN input=$SN>修改會員資料</a>
+                          @else
+                        <a class="dropdown-item" href="register" name="register">註冊會員</a>
+                        @endif</form>
+                        
+                        @if(session('mType')==2)
+                        <form method="get" action="{{route('restaurantS')}}">
+                        <a class="dropdown-item" href="restaurantS">餐廳相關</a>
+                        </form>
+                        @elseif(session('mType')==1)
+                        <form method="get" action="{{route('sudo')}}">
+                        <a class="dropdown-item" href="sudo">超級使用者界面</a>
+                        </form>
+                        @else
+                        <a class="dropdown-item" href="/">返回</a>
+                        @endif
                               </div>
              
                   

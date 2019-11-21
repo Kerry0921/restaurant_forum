@@ -212,10 +212,6 @@ public function detail(Request $request)
    
        //資料驗證
        $rules = [
-        'rName'=>[
-            'required',
-            'max:50',
-        ],
         'rDescription'=>[
             'required',
             'max:300',
@@ -233,11 +229,6 @@ public function detail(Request $request)
             'max:50',
         ],
         'rPhoto'=>[
-            'required',
-            'max:50',
-        ],
-        'mid'=>[
-            'unique:index',
             'required',
             'max:50',
         ],
@@ -303,6 +294,7 @@ public function detail(Request $request)
                 'unique:common',
                 'required',
            ],
+
            'common'=>[
                'required',
                'max:50',
@@ -313,6 +305,7 @@ public function detail(Request $request)
        ];
        //驗證
        $validator= Validator::make($input,$rules);
+       //錯誤訊息
        if($validator->fails()){
            //驗證錯誤判斷式
            return redirect('newcommon')->withErrors($validator)->withInput();

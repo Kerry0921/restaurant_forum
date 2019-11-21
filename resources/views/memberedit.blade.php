@@ -29,19 +29,35 @@
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   ...</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <form method="get" action="{{route('logout')}}">
+                        <form method="get">
+                        @if(session()->has('mName'))
                         <a class="dropdown-item" href="logout" name="logout">登出</a>
+                          @else
+                        <a class="dropdown-item" href="login" name="login">會員登入</a>
+                        @endif
                         </form>
                         <form method="get" action="{{route('favorite')}}">
                         <a class="dropdown-item" href="favorite" name="select">最愛清單</a>
                         </form>
-                        <form method="get" action="{{route('restaurantS')}}">
-                        @if(session('mType')==2)
+                        <form method="get">
+                        @if(session()->has('mName'))
+                        <?php $SN = session('mName') ?>
+                        <a class="dropdown-item" href="memberedit" name=$SN input=$SN>修改會員資料</a>
+                          @else
+                        <a class="dropdown-item" href="register" name="register">註冊會員</a>
+                        @endif</form>
                         
+                        @if(session('mType')==2)
+                        <form method="get" action="{{route('restaurantS')}}">
                         <a class="dropdown-item" href="restaurantS">餐廳相關</a>
+                        </form>
+                        @elseif(session('mType')==1)
+                        <form method="get" action="{{route('sudo')}}">
+                        <a class="dropdown-item" href="sudo">超級使用者界面</a>
+                        </form>
                         @else
                         <a class="dropdown-item" href="/">返回</a>
-                        @endif</form>
+                        @endif
                               </div>
 
                               
@@ -57,6 +73,8 @@
                             
 
             <div class=out1 style='text-align:center'>
+            @include('components.validationErrorMessage')
+
               <form action="memberedit" method="post">@foreach($member as $data)
                 <h1>會員資料修改</h1>
                 <div class="form-group">
