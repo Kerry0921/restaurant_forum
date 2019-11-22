@@ -56,11 +56,15 @@ public function selection(Request $request)
 public function like(Request $request)
     {
         $like = $request->input('like');
-
-        $likedata = favorite::create([
+        $fid = session('mid').$like;
+        $found = favorite::where('fid',$fid)->get();
+        if($found->first()){return redirect()->route('favorite');}
+        else
+        {$likedata = favorite::create([
+            'fid'=>$fid,
             'mid'=>session('mid'),
             'rid'=>$like,
-        ]);
+        ]);}
         return redirect()->route('favorite');
     } 
 
@@ -72,6 +76,7 @@ public function favorite()
         $fdata=[
             'restaurant' => $favorite
         ];
+        
         return view('favorite',$fdata);
     }
 
@@ -95,15 +100,9 @@ public function detail(Request $request)
         $detaildata=[
             'restaurant' => $detail
         ];
-        
-        //追蹤按鈕改變
-        $favo = favorite::where('mid','=',session('mid'))->get();
-        $fdata = [
-            'favorite'=>$favo,
-        ];
         //追蹤人數
         $count = favorite::where('rid','=',$d)->count();
-        return view('restaurant',$detaildata,compact('count'));
+        return view('restaurant',$detaildata,compact('count','d'));
     }
 
     //餐廳相關界面

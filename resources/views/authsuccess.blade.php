@@ -55,7 +55,7 @@
                <div>　　　　　　　　　　　　　　　　</div>
                <div>　　　　　　　　　　　　　　　　</div>
                
-            <div><a href="/"><button class="btn btn-secondary">返回</button></a>
+            <div><a href="/login"><button class="btn btn-secondary">返回</button></a>
                 
             <div>　　　　　　　　　　　　　　　　</div>
             <div>　　　　　　　　　　　　　　　　</div>

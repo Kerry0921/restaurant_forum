@@ -29,17 +29,18 @@
     <p></p>
     <!--網頁內容-->
     <div class="background  bg-light text-dar">
-        <div class="text" style="text-align:center;">餐廳資訊</div>
+
+        <div class="text" style="text-align:center;">{{$d}} 的餐廳資訊</div>
         <p></p>
 
         <div class="container restaurant-navbar">
             <div class="row justify-content-md-center">
                 <div class="col-sm text-center bg-light text-dar">
                 
-                    追蹤人數：{{$count}}人
+                <h3>追蹤人數：{{$count}} </h3>
                 </div>
                 <div class="col-sm  bg-danger text-white text-center  ">
-                    資訊
+                    資訊 
                 </div>
                 @foreach($restaurant as $detaildata)
                 <div class="col-sm text-center bg-light text-dar ">
@@ -72,11 +73,18 @@
         </div>
         <p></p>
         <div class="container restaurant-bookingbutton">
+
             <div class="row">
                 <div class="col-sm">
+                @include('components.validationErrorMessage')
+
+                @if(session()->has('mid'))
+                
                 <form method="get" action="{{route('like')}}">
                 <button   type="submit" class="btn btn-primary" value="{{$detaildata->rName}}" name="like">追蹤</button></a>
                 </form>
+                    
+                @endif
                 
                 </div>
             </div>
