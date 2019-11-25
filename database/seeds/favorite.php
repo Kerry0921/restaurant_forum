@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class favorite extends Seeder
 {
@@ -11,8 +12,12 @@ class favorite extends Seeder
      */
     public function run()
     {
-      DB::table('favorite')->insert([
-     'rid'=>Str::random(10)
+        DB::table('favorite')->insert([
+
+        'fid'=>Str::random(10),
+        'mid'=>Str::random(10),
+	    'rid'=>Str::random(10),
+        
 ]);
         //
     }

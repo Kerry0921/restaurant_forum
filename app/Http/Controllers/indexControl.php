@@ -58,7 +58,7 @@ public function like(Request $request)
         $like = $request->input('like');
         $fid = session('mid').$like;
         $found = favorite::where('fid',$fid)->get();
-        if($found->first()){return redirect()->route('favorite');}
+        if($found->first()){return redirect()->route('favorite');}//如果＄found有抓到跟＄fid相同值則返回
         else
         {$likedata = favorite::create([
             'fid'=>$fid,
