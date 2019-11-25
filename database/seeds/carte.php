@@ -12,13 +12,14 @@ class carte extends Seeder
     public function run()
     {
       DB::table('carte')->insert([
-      'rid'=>Str::random(10),
-      'cName'=>Str::random(10),
-      'cprice'=> FLOOR(RAND()*10),
-      'cRecommend'=>Str::random(10),
-      'cDescription'=>Str::random(10),
+        'rid'=>"1",
+        'cName'=>"1",
+        'cprice'=>"1",
+        'cRecommend'=>"1",
+        'cDescription'=>"1",
+]);
+        
 
-]); 
   //
     }
 }

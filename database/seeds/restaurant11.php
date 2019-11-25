@@ -11,7 +11,6 @@ class restaurant extends Seeder
      */
     public function run()
     {
-       
       DB::table('restaurant')->insert([
         'rName'=>Str::random(3),
         'rDescription'=>Str::random(15),
@@ -20,6 +19,10 @@ class restaurant extends Seeder
         'rAddress'=>Str::random(10),
         'rPhoto'=>Str::random(10),
         'mid'=>Str::random(10),
-        'rType'=>"2",]);
+        'rType'=>"2",
+]);
+        
+
+  //
     }
 }

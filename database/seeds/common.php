@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class restaurant extends Seeder
+class common extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,10 +12,11 @@ class restaurant extends Seeder
     public function run()
     {
       DB::table('common')->insert([
-        'mid'=>"1",
-        'rid'=>"1",
-        'common'=>"1",
-        'point'=>"1",
+        'fid'=>Str::random(10),
+        'mid'=>Str::random(10),
+        'rid'=>Str::random(10),
+        'common'=>Str::random(10),
+        'point'=>Str::random(10),
 ]);
         
 

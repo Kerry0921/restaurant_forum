@@ -78,15 +78,15 @@ return [
         'array' => 'The :attribute must not have more than :value items.',
     ],
     'max' => [
-        'numeric' => 'The :attribute 不得多於 :max.',
+        'numeric' => ' :attribute 不得多於 :max!',
         'file' => 'The :attribute may not be greater than :max kilobytes.',
-        'string' => 'The :attribute may not be greater than :max characters.',
+        'string' => ' :attribute 不能多於 :max 字!',
         'array' => 'The :attribute may not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
-        'numeric' => ' :attribute 不得少於 :min.',
+        'numeric' => ' :attribute 不得少於 :min!',
         'file' => 'The :attribute must be at least :min kilobytes.',
         'string' => 'The :attribute must be at least :min characters.',
         'array' => 'The :attribute must have at least :min items.',
@@ -158,6 +158,8 @@ return [
         'rOffer' => '推薦菜色',
         'rAddress' => '餐廳地點',
         'rPhoto' => '餐廳相片',
+        'common'=> '評論內容',
+        'fid'=>'評論',
     ],
 
 ];

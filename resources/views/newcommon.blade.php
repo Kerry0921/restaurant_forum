@@ -57,6 +57,8 @@
                             
 
             <div class=out1 style='text-align:center'>
+            @include('components.validationErrorMessage')
+
               <form action="newcommon" method="post">
                 <h1>新增評論</h1>
                 <div class="form-group">
