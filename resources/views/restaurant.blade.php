@@ -98,7 +98,7 @@
                 餐廳地點
             </div>
             <div class="col-sm" style="text-align: right;">
-           <a href="https://www.google.com/maps/search/{{$detaildata->rAddress}}"><button type="button" class="btn btn-outline-info">查看地圖</button></a>
+           <a href="https://www.google.com/maps/search/{{$detaildata->rAddress}}" target="_blank" title="{{$detaildata->rName}}"><button type="button" class="btn btn-outline-info">查看地圖</button></a>
            </div>
         </div>
     </div>
