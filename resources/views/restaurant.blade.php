@@ -1,58 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
- 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>餐廳資訊</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--[if lt IE 9]>       
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>       
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>     
-  <![endif]-->
-</head>
-
-<body>
-    <!--網頁LOGO-->
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col col-lg-2">
-            </div>
-            <div class="col-md-auto">
-            <a href="/"><img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/header_logo.png" width="200"></a>
-            </div>
-            <div class="col col-lg-2">
-            </div>
-        </div>
-    </div>
-    <p></p>
+@extends('layouts.master')
+@section('title','餐廳資訊')
+<!--內容-->
+@section('content')
     <!--網頁內容-->
     <div class="background  bg-light text-dar">
-
-        <div class="text" style="text-align:center;">{{$d}} 的餐廳資訊</div>
-        <p></p>
+<p>　</p>
+        <div class="text" style="text-align:center;"><h3>{{$d}} 的餐廳資訊</h3></div>
+<p>　</p>
 
         <div class="container restaurant-navbar">
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-md-center ">
                 <div class="col-sm text-center bg-light text-dar">
                 
-                <h3>追蹤人數：{{$count}} </h3>
+                <h6>追蹤人數：{{$count}} </h6>
                 </div>
-                <div class="col-sm  bg-danger text-white text-center  ">
+                <div class="col-sm  bg-danger text-white text-center ">
                     資訊 
                 </div>
                 @foreach($restaurant as $detaildata)
                 <div class="col-sm text-center bg-light text-dar ">
                 <form method="get" action="{{route('common')}}" name="common" value="{{$detaildata->rid}}">
-                   <a href="/common"><button type='submit' name="common" value="{{$detaildata->rid}}"> 全部評論 </button></a>
+                <button class="btn btn-secondary" type='submit' name="common" value="{{$detaildata->rid}}"> 全部評論 </button></a>
                    </form></div>  @endforeach
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm" style="text-align: center;">
-                <img src="https://dgo9uctxwg500.cloudfront.net/images/1200x1200/R14390_EZTABLE_0313_1_fc0b739f6b.png" style="width:60%;height: 500px;">
+                <img src="https://dgo9uctxwg500.cloudfront.net/images/1200x1200/R14390_EZTABLE_0313_1_fc0b739f6b.png" class="img-fluid" alt="Responsive image">
             </div>
         </div>
         <p></p>
@@ -271,102 +246,9 @@
             {{$detaildata->rDescription}}
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col-sm text-dark" style="font-size:16px;margin-top: 10px;">
-                人生只有那麼一次，你追求的是什麼呢？
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm text-dark" style="font-size:16px;margin-top: 10px;">
-                是夢想、是理想生活、是一段穩定關係，總之人生就該活的精彩
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm text-dark" style="font-size:16px;margin-top: 10px;">
-                利用一杯咖啡的時間，喚醒生命的熱情
-            </div>
-        </div> -->
+        
     </div>@endforeach
     <p></p>
     <p></p>
     <p></p>
-
-    <!--頁尾導覽列-->
-    <div class="container bg-dark">
-        <div class="row">
-            <ul class="nav justify-content-left">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">關於</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">人才招募</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">EZTABL Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">服務條款</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">隱私權政策</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">餐聽合作</a>
-                </li>
-
-            </ul>
-            <div class="col12 col-md-2"></div>
-            <div class="col12 col-md-2">
-                <div class="d-flex align-items-center">
-                    <div class="col-sm">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                語言選擇
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--頁尾文字資訊-->
-    <div class="container bg-dark">
-        <div class="row">
-            <div class="col">
-            </div>
-            <div class="col text-warning">
-                <h6>台北市信義區基隆路一段178號5樓</h6>
-            </div>
-            <div class="col">
-            </div>
-        </div>
-    </div>
-    <div class="container bg-dark">
-        <div class="row">
-            <div class="col">
-            </div>
-            <div class="col-12 col-md-3 text-warning">
-                <h6>taiwan@eztable.com</h6>
-            </div>
-            <div class="col">
-            </div>
-        </div>
-    </div>
-    <div class="container bg-dark">
-        <div class="row">
-            <div class="col">
-            </div>
-            <div class="col-5 text-warning ">
-                <p class="h6">週一至週四 10:00 至 19:00，週五 10：00 至 18：00</p>
-            </div>
-            <div class="col">
-            </div>
-        </div>
-    </div>
-
-</body>
-
-</html>
+@endsection

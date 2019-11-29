@@ -1,69 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<head>
-@include('components.validationErrorMessage')
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>追蹤頁面</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-
-<body>
-<div class="d-flex align-items-center">
-                  <div class="col-sm">
-                        <div class="dropdown">
-                                <a href="/"><button class="btn btn-secondary" type="button" >
-                                  返回
-                                </button></a>
-                              </div>
-                  </div>
-                  
-                  <div class="col-sm" style="text-align: center;">
-                  <a href ="/"><img src="https://d1gpbxqmt7wq2i.cloudfront.net/asset/mobile/images/logo/logo_moments_zh.png"width="200"></a>                  </div>
-                  <div class="col-sm"  class="dropdown" style="text-align: right;">
-                  @if(session()->has('mName'))
-                  <?php echo "目前用戶：",session('mName') ?>
-                  @else 
-                  <?php echo "目前尚未登入"?>
-                  @endif
-                  
-                 
-                 
-                        @if(session()->has('mName'))
-                        <form method="get" action="{{route('logout')}}">
-                        <a href="logout" class="btn btn-secondary" type="button" name="logout">登出</button></a>
-                        </form>
-                          @else
-                          <form method="get" action="{{route('login')}}">
-                        <a href="login" class="btn btn-secondary" type="button" name="login">會員登入</button></a>
-                        </form>
-                        @endif
-                        
-                        
-                 </div>  
-          </div>
-
+@extends('layouts.master')
+@section('title','最愛清單')
+<!--內容-->
+@section('content')
     <!--網頁內容-->
     <div class="container bg-light text-dark">
     <div class="text" style="text-align:center;">
-    @if(session()->has('mName'))<?php echo session('mName'),"的最愛清單"?>
-                                                     @else 
-                                                     <?php echo "最愛清單" ?>@endif</div>
+    @if(session()->has('mName'))
+    <?php echo session('mName'),"的最愛清單"?>
+    @else 
+    <div style="color:red;"><h3><?php echo "目前尚未登入" ?></h3></div>
+    <div>
+    <div>　</div>
+    <div>　</div>
+    <div>　</div>
+    <form method="get" action="{{route('login')}}">
+    <button type="submit" class="btn btn-success"><h3 style="color:white;">登入會員</a><h3></button>
+    </form>
+    </div>
+    <div>　</div>
+    <div>　</div>
+    <div>　</div>
+    <form method="get" action="{{route('index')}}">
+    <button type="submit" class="btn btn-secondary"><h3 style="color:white;">返回</a><h3></button>
+    </form>
+    @endif</div>
         <div class="text" style="text-align:left;">
         <p></p>
         <div class="container">
             <div class="row">
             @foreach($restaurant as $favorite)
                 <div class="col-2" style="text-align: right;">
-
                 </div>
-
                 <div class="col-8 bg-info  text-white"><p></p>
                     <div class="col-sm" style="font-weight:bolder; font-size: 28px">
-                    
                     <a href="detail?detail={{$favorite->rid}}" name="detail" value="{{$favorite->rid}}"><img src="https://dgo9uctxwg500.cloudfront.net/images/480x480%23/zh_TW_dbf3d7abe4.png" style="height: 150px;width: 150px;"></a>
                     <a href="detail?detail={{$favorite->rid}}" name="detail" value="{{$favorite->rid}}" style="color:white;">{{$favorite->rid}}</a>
                         <div><form method="get" action="{{route('unlike')}}"><button type="submit" class="btn btn-primary" value="{{$favorite->rid}}" name="unlike">取消追蹤</button></div></form>
@@ -73,84 +42,5 @@
             </div>
             <p></p>
         </div>
-        
     </div>
-    <!--頁尾導覽列-->
-    <div class="container bg-dark" id="Footer">
-        <div class="row">
-            <ul class="nav justify-content-left">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">關於</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">人才招募</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">EZTABL Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">服務條款</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">隱私權政策</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">餐聽合作</a>
-                </li>
-
-            </ul>
-            <div class="col12 col-md-2"></div>
-            <div class="col12 col-md-2">
-                <div class="d-flex align-items-center">
-                    <div class="col-sm">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    語言選擇
-                                </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--頁尾文字資訊-->
-    <div class="container bg-dark">
-        <div class="row">
-            <div class="col">
-            </div>
-            <div class="col text-warning">
-                <h6>台北市信義區基隆路一段178號5樓</h6>
-            </div>
-            <div class="col">
-            </div>
-        </div>
-    </div>
-    <div class="container bg-dark">
-        <div class="row">
-            <div class="col">
-            </div>
-            <div class="col-12 col-md-3 text-warning">
-                <h6>taiwan@eztable.com</h6>
-            </div>
-            <div class="col">
-            </div>
-        </div>
-    </div>
-    <div class="container bg-dark">
-        <div class="row">
-            <div class="col">
-            </div>
-            <div class="col-5 text-warning ">
-                <p class="h6">週一至週四 10:00 至 19:00，週五 10：00 至 18：00</p>
-            </div>
-            <div class="col">
-            </div>
-        </div>
-    </div>
-
-</body>
-
-</html>
+@endsection
